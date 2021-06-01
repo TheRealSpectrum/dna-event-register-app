@@ -7,14 +7,24 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "lint-eslint": "eslint \"resources/js/**/*.js\"",
+        "lint-prettier": "prettier --check .",
+        "fix-eslint": "eslint \"resources/js/**/*.js\" --fix",
+        "fix-prettier": "prettier --write ."
     },
     "devDependencies": {
+        "@prettier/plugin-php": "^0.16.3",
+        "@typescript-eslint/eslint-plugin": "^4.26.0",
+        "@typescript-eslint/parser": "^4.26.0",
         "autoprefixer": "^10.2.6",
         "axios": "^0.21",
+        "eslint": "^7.27.0",
+        "eslint-config-prettier": "^8.3.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
+        "prettier": "^2.3.0",
         "tailwindcss": "^2.1.2"
     }
 }
