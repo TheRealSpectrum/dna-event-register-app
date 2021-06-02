@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker exec dna-event-register_laravel.test_1 npm run lint-eslint
+docker exec dna-event-register_laravel.test_1 npm run lint-prettier
