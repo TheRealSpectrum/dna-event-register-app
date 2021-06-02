@@ -1,4 +1,4 @@
-# *DNA*: Event Register App
+# _DNA_: Event Register App
 
 ## Quick start
 

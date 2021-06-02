@@ -3,3 +3,7 @@ vendor/
 .git/
 public/
 storage/
+composer.json
+composer.lock
+package.json
+package-lock.json
