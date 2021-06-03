@@ -2,16 +2,16 @@
 
 # Views
 
-- Index -> List of upcoming events.
-- Event CRUD
-- Login
-- Admin panel
+-   Index -> List of upcoming events.
+-   Event CRUD
+-   Login
+-   Admin panel
 
 # Database
 
-- User
-- Event
-- Registration
+-   User
+-   Event
+-   Registration
 
 ```mermaid
 erDiagram
@@ -38,6 +38,3 @@ erDiagram
     }
     event ||--o{ registration : has
 ```
-
-
-
