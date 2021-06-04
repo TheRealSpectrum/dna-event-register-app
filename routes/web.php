@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\{AdminController, EventController, UserController};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", function () {
     return view("welcome");
 });
+
+Route::get("/admin", AdminController::class)->name("admin");
+route::get("/", [EventController::class, "index"])->name("events.index");
+Route::resource("events", EventController::class)->except(["index"]);
+Route::resource("users", UserController::class);
