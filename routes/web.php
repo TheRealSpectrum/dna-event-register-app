@@ -19,7 +19,19 @@ Route::get("/", function () {
     return view("welcome");
 });
 
-Route::get("/admin", AdminController::class)->name("admin");
+Route::get("/admin", [AdminController::class, "dashboard"])->name(
+    "admin.dashboard"
+);
 route::get("/", [EventController::class, "index"])->name("events.index");
 Route::resource("events", EventController::class)->except(["index"]);
 Route::resource("users", UserController::class);
+
+Route::get("/admin/login", [AdminController::class, "login"])->name(
+    "admin.login"
+);
+route::post("/admin/login", [AdminController::class, "authenticate"])->name(
+    "admin.authenticate"
+);
+route::post("/admin/logout", [AdminController::class, "logout"])->name(
+    "admin.logout"
+);
