@@ -32,3 +32,6 @@ Route::get("/admin/login", [AdminController::class, "login"])->name(
 route::post("/admin/login", [AdminController::class, "authenticate"])->name(
     "admin.authenticate"
 );
+route::post("/admin/logout", [AdminController::class, "logout"])->name(
+    "admin.logout"
+);
