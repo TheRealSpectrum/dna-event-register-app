@@ -15,12 +15,15 @@ class AdminController extends Controller
      */
     public function dashboard(Request $request)
     {
-        //
+        return view("admin.dashboard");
     }
 
     public function login()
     {
-        return view("auth/login");
+        if (Auth::check()) {
+            return redirect()->route("admin.dashboard");
+        }
+        return view("admin/login");
     }
 
     public function authenticate(Request $request)
