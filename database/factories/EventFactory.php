@@ -22,7 +22,7 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            "organizer" => $this->faker->company(),
+            "organizer" => $this->faker->name(),
             "date" => $this->faker->dateTimeBetween("+1 day", "+20 days"),
             "location" => $this->faker->words(2, true),
             "description" => $this->faker->paragraph(20),
