@@ -9,7 +9,7 @@
 @error('email')
     <p class="text-red-500">{{ session()->get("errors")->first("email") }}</p>
 @enderror
-<label for="email">password</label>
+<label for="email">wachtwoord</label>
 <input type="password" name="password" class="border-blue-500 border max-w-sm">
 <button type="submit">login</button>
 </form>
