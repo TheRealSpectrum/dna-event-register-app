@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view("users.index", [
+            "users" => User::all(),
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view("users.create");
     }
 
     /**
@@ -34,7 +37,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "user_name" => "required",
+            "user_email" => "required",
+            "user_password" => "required",
+        ]);
+        $user = new User();
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
+        $user->password = bcrypt($request->user_password);
+        $user->save();
+        return redirect()
+            ->route("users.index")
+            ->with("success", "Gebruiker is succesvol aangemaakt");
     }
 
     /**
@@ -45,7 +60,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view("users.show", [
+            "user" => User::findOrFail($id),
+        ]);
     }
 
     /**
@@ -56,7 +73,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("users.edit", [
+            "user" => User::findOrFail($id),
+        ]);
     }
 
     /**
@@ -68,7 +87,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "user_name" => "required",
+            "user_email" => "required",
+        ]);
+        $user = User::find($id);
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
+        $user->password = bcrypt($request->user_password);
+        $user->save();
+        return redirect()
+            ->route("users.index")
+            ->with("success", "Gebruiker is succesvol geupdate");
     }
 
     /**
@@ -77,8 +107,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()
+            ->route("users.index")
+            ->with("success", "Gebruiker is succesvol verwijderd");
     }
 }
