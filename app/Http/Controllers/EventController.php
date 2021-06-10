@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -13,7 +14,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return view("events.index", [
+            "events" => Event::withCount("registrations")->get(),
+        ]);
     }
 
     /**
@@ -23,7 +26,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view("events.create");
     }
 
     /**
@@ -34,7 +37,16 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $createdEvent = Event::create([
+            "organizer" => $request->input("organizer"),
+            "date" => $request->input("date"),
+            "location" => $request->input("location"),
+            "description" => $request->input("description"),
+            "max_registration_num" => $request->input("max-registration-num"),
+        ]);
+        return redirect()->route("events.show", [
+            "evenementen" => $createdEvent->id,
+        ]);
     }
 
     /**
@@ -45,7 +57,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        return view("events.show");
     }
 
     /**
@@ -56,7 +68,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("events.edit");
     }
 
     /**
@@ -68,7 +80,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->route("events.show", ["id" => $id]);
     }
 
     /**
@@ -79,6 +91,6 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect()->route("events.index");
     }
 }
