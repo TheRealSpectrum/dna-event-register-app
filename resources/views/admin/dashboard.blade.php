@@ -8,7 +8,7 @@
 @else
 <form method="post" action="{{route("admin.logout")}}">
     @csrf
-    <button type="submit">logout</button>
+    <button type="submit">loguit</button>
 </form>
 @endguest
 
