@@ -32,7 +32,8 @@ Route::resource("evenementen", EventController::class)
 
 Route::resource("gebruikers", UserController::class)
     ->names("users")
-    ->parameter("gebruikers", "user");
+    ->parameter("gebruikers", "user")
+    ->middleware("auth");
 
 Route::get("/admin/login", [AdminController::class, "login"])->name(
     "admin.login"
