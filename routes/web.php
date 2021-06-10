@@ -26,7 +26,9 @@ route::get("/", [EventController::class, "index"])->name("events.index");
 Route::resource("evenementen", EventController::class)
     ->except(["index"])
     ->names("events");
-Route::resource("gebruikers", UserController::class)->names("users");
+Route::resource("gebruikers", UserController::class)
+    ->names("users")
+    ->middleware("auth");
 
 Route::get("/admin/login", [AdminController::class, "login"])->name(
     "admin.login"
