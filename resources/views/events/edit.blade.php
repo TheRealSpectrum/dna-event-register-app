@@ -34,6 +34,15 @@
 
 </form>
 
+<form action="{{route("events.destroy", ["event" => $event->id])}}" method="post">
+    @csrf
+    @method("DELETE")
+    <button type="submit"
+        class="border-2 border-red-400 rounded-md bg-red-700 text-blue-50 p-2">
+        Delete event
+    </button>
+</form>
+
 <h2>Registraties:</h2>
 
 @foreach ($event->registrations as $registration)

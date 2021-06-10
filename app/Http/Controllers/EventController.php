@@ -135,6 +135,10 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
+        $event = Event::where("id", $id)->firstOrFail();
+        $event->registrations()->delete();
+        $event->delete();
+
         return redirect()->route("events.index");
     }
 }
