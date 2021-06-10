@@ -23,8 +23,10 @@ Route::get("/admin", [AdminController::class, "dashboard"])->name(
     "admin.dashboard"
 );
 route::get("/", [EventController::class, "index"])->name("events.index");
-Route::resource("events", EventController::class)->except(["index"]);
-Route::resource("users", UserController::class);
+Route::resource("evenementen", EventController::class)
+    ->except(["index"])
+    ->names("events");
+Route::resource("gebruikers", UserController::class)->names("users");
 
 Route::get("/admin/login", [AdminController::class, "login"])->name(
     "admin.login"
@@ -32,6 +34,6 @@ Route::get("/admin/login", [AdminController::class, "login"])->name(
 route::post("/admin/login", [AdminController::class, "authenticate"])->name(
     "admin.authenticate"
 );
-route::post("/admin/logout", [AdminController::class, "logout"])->name(
+route::post("/admin/loguit", [AdminController::class, "logout"])->name(
     "admin.logout"
 );
