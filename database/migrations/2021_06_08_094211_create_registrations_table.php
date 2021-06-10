@@ -17,7 +17,7 @@ class CreateRegistrationsTable extends Migration
             $table->id();
 
             $table->foreignId("event_id")->constrained();
-            $table->string("name", 30);
+            $table->string("name", 100);
             $table->string("email");
             $table->text("note");
 
