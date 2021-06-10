@@ -18,6 +18,11 @@
     </style>
 </head>
 
+<header>
+    @include('layouts.header')
+</header>
+
+
 <body class="antialiased">
     @yield("content")
 </body>
