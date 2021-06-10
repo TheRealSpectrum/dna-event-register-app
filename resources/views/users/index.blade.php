@@ -56,9 +56,13 @@
                                 </a>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <a href="/gebruikers/{{ $user->id }}" class="text-red-600 hover:text-red-900">
-                                    Verwijderen
-                                </a>
+                                <form action="{{ route("users.destroy", $user->id) }}" method="POST">
+                                @csrf
+                                @method("DELETE")
+                                    <button type="submit" class="text-red-600 hover:text-red-900">
+                                        Verwijderen
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
