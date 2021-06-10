@@ -45,7 +45,7 @@ class EventController extends Controller
             "max_registration_num" => $request->input("max-registration-num"),
         ]);
         return redirect()->route("events.show", [
-            "evenementen" => $createdEvent->id,
+            "event" => $createdEvent->id,
         ]);
     }
 

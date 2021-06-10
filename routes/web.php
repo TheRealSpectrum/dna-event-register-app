@@ -22,11 +22,17 @@ Route::get("/", function () {
 Route::get("/admin", [AdminController::class, "dashboard"])->name(
     "admin.dashboard"
 );
+
 route::get("/", [EventController::class, "index"])->name("events.index");
+
 Route::resource("evenementen", EventController::class)
     ->except(["index"])
-    ->names("events");
-Route::resource("gebruikers", UserController::class)->names("users");
+    ->names("events")
+    ->parameter("evenementen", "event");
+
+Route::resource("gebruikers", UserController::class)
+    ->names("users")
+    ->parameter("gebruikers", "user");
 
 Route::get("/admin/login", [AdminController::class, "login"])->name(
     "admin.login"
