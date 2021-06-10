@@ -22,9 +22,12 @@
     @include('layouts.header')
 </header>
 
-
 <body class="antialiased">
     @yield("content")
 </body>
+
+<footer>
+    @include("layouts.footer")
+</footer>
 
 </html>
