@@ -57,7 +57,11 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        return view("events.show");
+        return view("events.show", [
+            "event" => Event::where("id", $id)
+                ->with("registrations")
+                ->firstOrFail(),
+        ]);
     }
 
     /**
