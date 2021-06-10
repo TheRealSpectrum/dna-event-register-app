@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view("users.create");
     }
 
     /**
@@ -37,7 +37,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "user_name" => "required",
+            "user_email" => "required",
+            "user_password" => "required",
+        ]);
+        $user = new User();
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
+        $user->password = bcrypt($request->user_password);
+        $user->save();
+        return redirect()
+            ->route("users.index")
+            ->with("success", "Gebruiker is succesvol aangemaakt");
     }
 
     /**
