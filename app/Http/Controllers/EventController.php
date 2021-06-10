@@ -13,7 +13,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return view("events.index");
     }
 
     /**
@@ -23,7 +23,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view("events.create");
     }
 
     /**
@@ -34,7 +34,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route("events.index");
     }
 
     /**
@@ -45,7 +45,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        return view("events.show");
     }
 
     /**
@@ -56,7 +56,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("events.edit");
     }
 
     /**
@@ -68,7 +68,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->route("events.show", ["id" => $id]);
     }
 
     /**
@@ -79,6 +79,6 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect()->route("events.index");
     }
 }
