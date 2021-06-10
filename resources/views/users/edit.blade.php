@@ -5,10 +5,11 @@
 @section("content")
 <section class="h-screen bg-gray-100 bg-opacity-50">
     <div class="px-4 pb-4 text-gray-500 mt-4 md:w-1/6">
-        <button type="button" class="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-            Terug naar gebruikers
-            </a>
-        </button>
+        <a href="/gebruikers">
+            <button type="button" class="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                Terug naar gebruikers 
+            </button>
+        </a>
     </div>
     <form class="container max-w-2xl mx-auto shadow-md md:w-3/4">
         <div class="p-4 bg-gray-100 border-t-2 border-indigo-400 rounded-lg bg-opacity-5">
