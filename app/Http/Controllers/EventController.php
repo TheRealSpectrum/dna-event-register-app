@@ -44,6 +44,7 @@ class EventController extends Controller
             "description" => $request->input("description"),
             "max_registration_num" => $request->input("max-registration-num"),
         ]);
+
         return redirect()->route("events.show", [
             "event" => $createdEvent->id,
         ]);
@@ -72,7 +73,11 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        return view("events.edit");
+        return view("events.edit", [
+            "event" => Event::where("id", $id)
+                ->with("registrations")
+                ->firstOrFail(),
+        ]);
     }
 
     /**
@@ -84,7 +89,42 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return redirect()->route("events.show", ["id" => $id]);
+        $event = Event::where("id", $id)->firstOrFail();
+
+        if (
+            $request->has("organizer") &&
+            !empty($request->input("organizer"))
+        ) {
+            $event->organizer = $request->input("organizer");
+        }
+
+        if ($request->has("date") && !empty($request->input("date"))) {
+            $event->date = $request->input("date");
+        }
+
+        if ($request->has("location") && !empty($request->input("location"))) {
+            $event->location = $request->input("location");
+        }
+
+        if (
+            $request->has("description") &&
+            !empty($request->input("description"))
+        ) {
+            $event->description = $request->input("description");
+        }
+
+        if (
+            $request->has("max-registration-num") &&
+            !empty($request->input("max-registration-num"))
+        ) {
+            $event->max_registration_num = $request->input(
+                "max-registration-num"
+            );
+        }
+
+        $event->save();
+
+        return redirect()->route("events.show", ["event" => $id]);
     }
 
     /**
