@@ -17,17 +17,17 @@
         }
     </style>
 </head>
-
+<div class="flex flex-col h-screen">
 <header>
     @include("layouts.header")
 </header>
 
-<body class="antialiased">
+<body class="antialiased flex-grow">
     @yield("content")
 </body>
 
 <footer>
     @include("layouts.footer")
 </footer>
-
+</div>
 </html>
