@@ -3,7 +3,7 @@
 @section("title", $user->name)
 
 @section("content")
-<section class="h-screen bg-gray-100 bg-opacity-50">
+<section class="h-screen bg-gray-100 dark:bg-gray-900">
     <div class="px-4 pb-4 text-gray-500 pt-4 md:w-1/6">
         <a href="/gebruikers">
             <button type="submit" class="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
@@ -18,14 +18,14 @@
                     <a href="#" class="block relative">
                         <img alt="profile" src="https://via.placeholder.com/150" class="mx-auto object-cover rounded-full h-16 w-16 "/>
                     </a>
-                    <h1 class="text-gray-600">
+                    <h1 class="text-gray-600 dark:text-gray-300">
                         {{ $user->name }}
                     </h1>
                 </div>
             </div>
         </div>
-        <div class="space-y-6 bg-white">
-            <div class="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+        <div class="space-y-6 bg-gray-100 dark:bg-gray-900">
+            <div class="items-center w-full p-4 space-y-4 text-gray-500 dark:text-gray-300 md:inline-flex md:space-y-0">
                 <h2 class="max-w-sm mx-auto md:w-1/3">
                     Account
                 </h2>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <hr/>
-                <div class="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
+                <div class="items-center w-full p-4 space-y-4 text-gray-500 dark:text-gray-300 md:inline-flex md:space-y-0">
                     <h2 class="max-w-sm mx-auto md:w-1/3">
                         Naam
                     </h2>
