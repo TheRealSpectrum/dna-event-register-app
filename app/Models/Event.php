@@ -27,4 +27,28 @@ class Event extends Model
     {
         return $this->hasMany(Registration::class);
     }
+
+    public function timeUntilEvent(): string
+    {
+        $difference = (new \DateTime("NOW"))->diff($this->date);
+        if ($difference->d > 14) {
+            $weeks = floor($difference->d / 7);
+            return "in $weeks weeks";
+        }
+
+        if ($difference->d === 1) {
+            return "tommorow at {$this->time()}";
+        }
+
+        if ($difference->d > 0) {
+            return "in {$difference->d} days";
+        }
+
+        return "today at {$this->time()}";
+    }
+
+    public function time(): string
+    {
+        return $this->date->format("h:m");
+    }
 }
