@@ -1,55 +1,75 @@
 @extends("layouts.app")
 
 @section("content")
-<h1>Edit event: (title here)</h1>
-<form action="{{route("events.update", ["event" => $event->id])}}" method="post"
-    class="flex flex-col items-start">
-    @csrf
-    @method("PATCH")
+<section class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
 
-    <label for="organizer">Organisator</label>
-    <input type="text" name="organizer" id="organizer" placeholder="{{$event->organizer}}"
-        class="border-2 border-green-400 rounded-md">
+    <div
+        class="bg-white dark:bg-gray-800 my-5 mx-auto p-6 max-w-3xl rounded-lg border-t-2 border-indigo-400">
+        <form action="{{route("events.update", ["event" => $event->id])}}" method="post">
 
-    <label for="date">Datum</label>
-    <input type="datetime-local" name="date" id="date" value="{{$event->date->format("Y-m-d\TH:i:s")}}"
-        class="border-2 border-green-400 rounded-md">
+            @method("PATCH")
+            @csrf
 
-    <label for="location">Locatie</label>
-    <input type="text" name="location" id="location" placeholder="{{$event->location}}"
-        class="border-2 border-green-400 rounded-md">
+            <h1 class="text-center text-2xl">Event name here</h1>
+            <div class="grid grid-cols-2 grid-rows-2 py-4">
+                <div class="text-center">
+                    <label for="date">Datum:</label><br>
+                    <input type="date" name="date" id="date" value="{{$event->date->format("Y-m-d")}}"
+                        class="border-2 border-indigo-400 dark:bg-gray-800">
+                </div>
 
-    <label for="description">Omschrijving</label>
-    <textarea name="description" id="description" placeholder="{{$event->description}}"
-        class="border-2 border-green-400 rounded-md"></textarea>
+                <div class="text-center">
+                    <label for="time">Tijd:</label><br>
+                    <input type="time" name="time" id="time" value="{{$event->date->format("H:i")}}"
+                        class="border-2 border-indigo-400 dark:bg-gray-800">
+                </div>
 
-    <label for="max-registration-num">Maximaal aantal registraties</label>
-    <input type="number" name="max-registration-num" id="max-registration-num" placeholder="{{$event->max_registration_num}}"
-        class="border-2 border-green-400 rounded-md">
+                <div class="text-center">
+                    <label for="location">Locatie:</label><br>
+                    <input type="text" name="location" id="location" value="{{$event->location}}"
+                        class="border-2 border-indigo-400 dark:bg-gray-800">
+                </div>
 
-    <button type="submit"
-        class="border-2 border-green-400 rounded-md bg-green-700 text-yellow-50 p-2">
-        Verander event informatie
-    </button>
+                <div class="text-center">
+                    <label for="organizer">Organisator:</label><br>
+                    <input type="text" name="organizer" id="organizer" value="{{$event->organizer}}"
+                        class="border-2 border-indigo-400 dark:bg-gray-800">
+                </div>
+            </div>
 
-</form>
+            <div class="flex flex-col">
+                <label for="description">Omschrijving:</label>
+                <textarea cols="30" rows="10" name="description"
+                    class="dark:bg-gray-800 border-2 border-indigo-400">{{$event->description}}</textarea>
+            </div>
 
-<form action="{{route("events.destroy", ["event" => $event->id])}}" method="post">
-    @csrf
-    @method("DELETE")
-    <button type="submit"
-        class="border-2 border-red-400 rounded-md bg-red-700 text-blue-50 p-2">
-        Delete event
-    </button>
-</form>
+            <div class="grid grid-cols-7 mt-4">
+                <label for="max-registration-num" class="col-span-2">Maximaal registraties</label>
+                <input type="number" name="max-registration-num" id="max-registration-num" value="{{$event->max_registration_num}}"
+                    class="col-span-1 dark:bg-gray-800 border-2 border-indigo-400">
+            </div>
 
-<h2>Registraties:</h2>
+            <button type="submit"
+                class="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200
+                text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md
+                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4">
 
-@foreach ($event->registrations as $registration)
-    <div class="border-red-500 border-2">
-        <h3>Naam: {{$registration->name}}</h3>
-        <p>Email: {{$registration->email}}</p>
-        <p>Notitie: {{$registration->note}}</p>
+                Evenement veranderen
+            </button>
+        </form>
+        <form action="{{route("events.destroy", ["event"=>$event->id])}}" method="post">
+
+            @csrf
+            @method("DELETE")
+
+            <button type="submit"
+                class="py-2 px-4 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200
+                text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md
+                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4">
+
+                Evenement verwijderen
+            </button>
+        </form>
     </div>
-@endforeach
+</section>
 @endsection
