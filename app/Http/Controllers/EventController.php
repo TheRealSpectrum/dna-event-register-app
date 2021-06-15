@@ -101,8 +101,14 @@ class EventController extends Controller
             $event->organizer = $request->input("organizer");
         }
 
-        if ($request->has("date") && !empty($request->input("date"))) {
-            $event->date = $request->input("date");
+        if (
+            $request->has("date") &&
+            !empty($request->input("date")) &&
+            $request->has("time")
+        ) {
+            $event->date = new Carbon(
+                $request->input("date") . " " . $request->input("time")
+            );
         }
 
         if ($request->has("location") && !empty($request->input("location"))) {
