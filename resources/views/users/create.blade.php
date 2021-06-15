@@ -3,6 +3,7 @@
 @section("title", "Maak gebruiker")
 
 @section("content")
+{{ $errors->has("email") }}
 <section class="h-screen bg-gray-100 dark:bg-gray-900">
     <div class="px-4 pb-4 text-gray-500 pt-4 md:w-1/6">
         <a href="/gebruikers">
@@ -32,7 +33,7 @@
                 </h2>
                 <div class="max-w-sm mx-auto md:w-2/3">
                     <div class=" relative ">
-                        <input type="text" id="user-info-email" name="email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
+                        <input type="text" id="user-info-email" name="email" value="{{ $errors->has("email") ? "" : old("email") }}" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
                         </div>
                         @error("email")
                             <p class="text-red-500">{{ $message }}</p> 
@@ -47,7 +48,7 @@
                 <div class="max-w-sm mx-auto space-y-5 md:w-2/3">
                     <div>
                         <div class=" relative ">
-                            <input type="text" id="user-info-name" name="name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Name"/>
+                            <input type="text" id="user-info-name" name="name" value="{{ $errors->has("name") ? "" : old("name") }}" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Name"/>
                         </div>
                         @error("name")
                             <p class="text-red-500">{{ $message }}</p> 
