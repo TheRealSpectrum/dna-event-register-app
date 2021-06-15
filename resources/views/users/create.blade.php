@@ -34,6 +34,9 @@
                     <div class=" relative ">
                         <input type="text" id="user-info-email" name="user_email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
                         </div>
+                        @error("user_email")
+                           <p class="text-red-500">{{ $message }}</p> 
+                        @enderror
                     </div>
                 </div>
                 <hr/>

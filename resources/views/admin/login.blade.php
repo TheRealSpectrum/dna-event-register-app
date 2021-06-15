@@ -1,5 +1,8 @@
 @extends("layouts.app")
 
+
+@section("content")
+<section class="h-screen">
 <h1>login</h1>
 
 <form method="post" action="{{route("admin.authenticate")}}" class="flex flex-col p-5">
@@ -13,4 +16,6 @@
 <input type="password" name="password" class="border-blue-500 border max-w-sm">
 <button type="submit">login</button>
 </form>
+</section>
+@endsection
 
