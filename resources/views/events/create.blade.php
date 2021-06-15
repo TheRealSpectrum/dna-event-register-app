@@ -1,34 +1,59 @@
 @extends("layouts.app")
 
 @section("content")
-<h1>Maak nieuw evenement aan</h1>
-<form method="post" action="{{route("events.store")}}"
-    class="flex flex-col items-start">
-    @csrf
-    <label for="organizer">Organisator</label>
-    <input type="text" name="organizer" id="organizer"
-        class="border-2 border-green-400 rounded-md">
+<section class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
 
-    <label for="date">Datum</label>
-    <input type="datetime-local" name="date" id="date"
-        class="border-2 border-green-400 rounded-md">
+    <form action="{{route("events.store")}}" method="post"
+        class="bg-white dark:bg-gray-800 my-5 mx-auto p-6 max-w-3xl rounded-lg border-t-2 border-indigo-400">
 
-    <label for="location">Locatie</label>
-    <input type="text" name="location" id="location"
-        class="border-2 border-green-400 rounded-md">
+        @csrf
 
-    <label for="description">Omschrijving</label>
-    <textarea name="description" id="description" cols="50" rows="10"
-        class="border-2 border-green-400 rounded-md">
-    </textarea>
+        <h1 class="text-center text-2xl">Event name here</h1>
+        <div class="grid grid-cols-2 grid-rows-2 py-4">
+            <div class="text-center">
+                <label for="date">Datum:</label><br>
+                <input type="date" name="date" id="date"
+                    class="border-2 border-indigo-400 dark:bg-gray-800">
+            </div>
 
-    <label for="max-registration-num">Maximale registraties</label>
-    <input type="number" name="max-registration-num" id="max-registration-num"
-        class="border-2 border-green-400 rounded-md">
+            <div class="text-center">
+                <label for="time">Tijd:</label><br>
+                <input type="time" name="time" id="time"
+                    class="border-2 border-indigo-400 dark:bg-gray-800">
+            </div>
 
-    <button type="submit"
-        class="border-2 border-green-400 rounded-md bg-green-700 text-yellow-50 p-2">
-        Maak evenement aan
-    </button>
-</form>
+            <div class="text-center">
+                <label for="location">Locatie:</label><br>
+                <input type="text" name="location" id="location"
+                    class="border-2 border-indigo-400 dark:bg-gray-800">
+            </div>
+
+            <div class="text-center">
+                <label for="organizer">Organisator:</label><br>
+                <input type="text" name="organizer" id="organizer"
+                    class="border-2 border-indigo-400 dark:bg-gray-800">
+            </div>
+        </div>
+
+        <div class="flex flex-col">
+            <label for="description">Omschrijving:</label>
+            <textarea cols="30" rows="10" name="description"
+                class="dark:bg-gray-800 border-2 border-indigo-400"></textarea>
+        </div>
+
+        <div class="grid grid-cols-7 mt-4">
+            <label for="max-registration-num" class="col-span-2">Maximaal registraties</label>
+            <input type="number" name="max-registration-num" id="max-registration-num"
+                class="col-span-1 dark:bg-gray-800 border-2 border-indigo-400">
+        </div>
+
+        <button type="submit"
+            class="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200
+            text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md
+            focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4">
+
+            Evenement aanmaken
+        </button>
+    </form>
+</section>
 @endsection
