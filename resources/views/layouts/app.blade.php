@@ -17,7 +17,7 @@
         }
     </style>
 </head>
-<div class="flex flex-col h-screen">
+<div class="flex flex-col min-h-screen">
 <header>
     @include("layouts.header")
 </header>
