@@ -32,10 +32,10 @@
                 </h2>
                 <div class="max-w-sm mx-auto md:w-2/3">
                     <div class=" relative ">
-                        <input type="text" id="user-info-email" name="user_email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
+                        <input type="text" id="user-info-email" name="email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Email"/>
                         </div>
-                        @error("user_email")
-                           <p class="text-red-500">{{ $message }}</p> 
+                        @error("email")
+                            <p class="text-red-500">{{ $message }}</p> 
                         @enderror
                     </div>
                 </div>
@@ -47,8 +47,11 @@
                 <div class="max-w-sm mx-auto space-y-5 md:w-2/3">
                     <div>
                         <div class=" relative ">
-                            <input type="text" id="user-info-name" name="user_name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Name"/>
+                            <input type="text" id="user-info-name" name="name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Name"/>
                         </div>
+                        @error("name")
+                            <p class="text-red-500">{{ $message }}</p> 
+                        @enderror
                 </div>
             </div>
         </div>
@@ -59,8 +62,11 @@
             </h2>
             <div class="max-w-sm mx-auto space-y-5 md:w-2/3">
                 <div class=" relative ">
-                    <input type="password" id="user-info-password" name="user_password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password"/>
+                    <input type="password" id="user-info-password" name="password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Password"/>
                     </div>
+                    @error("password")
+                            <p class="text-red-500">{{ $message }}</p> 
+                    @enderror
                 </div>
             </div>
             <hr/>
