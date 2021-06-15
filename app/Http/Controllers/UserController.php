@@ -35,11 +35,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $request->validate([
             "user_name" => "required",
-            "user_email" => "required",
+            "user_email" => "required|unique:users,email," . $user->id,
             "user_password" => "required",
         ]);
         $user = new User();
@@ -89,7 +89,7 @@ class UserController extends Controller
     {
         $request->validate([
             "user_name" => "required",
-            "user_email" => "required",
+            "user_email" => "unique:users,email," . $id,
         ]);
         $user = User::find($id);
         $user->name = $request->user_name;
