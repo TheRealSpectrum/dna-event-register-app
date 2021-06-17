@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Models\{Event, Registration};
+use App\Http\Requests\RegistrationRequest;
+use App\Models\Registration;
 
 class RegistrationController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(RegistrationRequest $request, int $id)
     {
-        Registration::create([
-            "event_id" => $id,
-            "name" => $request->input("name"),
-            "email" => $request->input("email"),
-            "note" => $request->input("note"),
-        ]);
+        Registration::create($request->transformed($id));
 
         return redirect()->route("events.show", ["event" => $id]);
     }
@@ -29,10 +22,9 @@ class RegistrationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $registration = Registration::where("id", $id)->firstOrFail();
         $eventId = $registration->event_id;
