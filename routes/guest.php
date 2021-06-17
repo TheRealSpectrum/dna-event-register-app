@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     AdminController,
     EventController,
-    UserController,
     RegistrationController
 };
 
@@ -20,26 +19,23 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get("/", function () {
-    return view("welcome");
-});
+// Admin (partial see admin.php)
+Route::prefix("admin")
+    ->name("admin.")
+    ->group(function () {
+        Route::get("/login", [AdminController::class, "login"])->name("login");
+        Route::post("/login", [AdminController::class, "authenticate"])->name(
+            "authenticate"
+        );
+    });
 
-Route::get("/admin", [AdminController::class, "dashboard"])
-    ->name("admin.dashboard")
-    ->middleware("auth");
+// Events (CRUD - partial see admin.php)
+Route::get("/", [EventController::class, "index"])->name("events.index");
+Route::get("/evenementen/{event}", [EventController::class, "show"])->name(
+    "events.show"
+);
 
-route::get("/", [EventController::class, "index"])->name("events.index");
-
-Route::resource("evenementen", EventController::class)
-    ->except(["index"])
-    ->names("events")
-    ->parameter("evenementen", "event");
-
-Route::resource("gebruikers", UserController::class)
-    ->names("users")
-    ->parameter("gebruikers", "user")
-    ->middleware("auth");
-
+// Registrations (CRUD store, delete)
 Route::post("/evenementen/{event}/registraties", [
     RegistrationController::class,
     "store",
@@ -48,13 +44,3 @@ Route::delete("/registraties/{registration}", [
     RegistrationController::class,
     "destroy",
 ])->name("registrations.destroy");
-
-Route::get("/admin/login", [AdminController::class, "login"])->name(
-    "admin.login"
-);
-route::post("/admin/login", [AdminController::class, "authenticate"])->name(
-    "admin.authenticate"
-);
-route::post("/admin/loguit", [AdminController::class, "logout"])->name(
-    "admin.logout"
-);
