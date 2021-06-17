@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -39,7 +40,9 @@ class EventController extends Controller
     {
         $createdEvent = Event::create([
             "organizer" => $request->input("organizer"),
-            "date" => $request->input("date"),
+            "date" => new Carbon(
+                $request->input("date") . " " . $request->input("time")
+            ),
             "location" => $request->input("location"),
             "description" => $request->input("description"),
             "max_registration_num" => $request->input("max-registration-num"),
@@ -98,8 +101,14 @@ class EventController extends Controller
             $event->organizer = $request->input("organizer");
         }
 
-        if ($request->has("date") && !empty($request->input("date"))) {
-            $event->date = $request->input("date");
+        if (
+            $request->has("date") &&
+            !empty($request->input("date")) &&
+            $request->has("time")
+        ) {
+            $event->date = new Carbon(
+                $request->input("date") . " " . $request->input("time")
+            );
         }
 
         if ($request->has("location") && !empty($request->input("location"))) {
