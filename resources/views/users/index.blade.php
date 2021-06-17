@@ -55,12 +55,12 @@
                                 </div>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">
+                                <p class="text-gray-900 dark:text-gray-300 whitespace-no-wrap">
                                     Admin
                                 </p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
-                                <p class="text-gray-900 whitespace-no-wrap">
+                                <p class="text-gray-900 dark:text-gray-300 whitespace-no-wrap">
                                     {{ $user->created_at->format('d/m/Y') }}
                                 </p>
                             </td>
