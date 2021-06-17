@@ -19,7 +19,11 @@
         @guest
 
         @if($event->registrations->count() < $event->max_registration_num)
-        <form class="mt-7 flex flex-col pl-4 border-indigo-400 border-l-4">
+        <form action="{{route("events.registrations.store", ["event" => $event->id])}}" method="post"
+            class="mt-7 flex flex-col pl-4 border-indigo-400 border-l-4">
+
+            @csrf
+
             <h2>Registreer voor dit event</h2>
 
             <label for="name">Naam:</label>
@@ -84,10 +88,10 @@
                 <div>Email: {{$registration->email}}</div>
                 <div>Notitie:<br><span class="ml-4">{{$registration->note}}</span></div>
 
-                <form action="" method="get">
+                <form action="{{route("registrations.destroy", ["registration" => $registration->id])}}" method="post">
 
-                    {{-- @csrf --}}
-                    {{-- @method("DELETE") --}}
+                    @csrf
+                    @method("DELETE")
 
                     <button type="submit"
                         class="py-2 px-4 bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500 focus:ring-offset-yellow-200
