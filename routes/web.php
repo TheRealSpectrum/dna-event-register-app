@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\{AdminController, EventController, UserController};
+use App\Http\Controllers\{
+    AdminController,
+    EventController,
+    UserController,
+    RegistrationController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +39,15 @@ Route::resource("gebruikers", UserController::class)
     ->names("users")
     ->parameter("gebruikers", "user")
     ->middleware("auth");
+
+Route::post("/evenementen/{event}/registraties", [
+    RegistrationController::class,
+    "store",
+])->name("events.registrations.store");
+Route::delete("/registraties/{registration}", [
+    RegistrationController::class,
+    "destroy",
+])->name("registrations.destroy");
 
 Route::get("/admin/login", [AdminController::class, "login"])->name(
     "admin.login"
