@@ -24,9 +24,9 @@ Route::get("/", function () {
     return view("welcome");
 });
 
-Route::get("/admin", [AdminController::class, "dashboard"])->name(
-    "admin.dashboard"
-);
+Route::get("/admin", [AdminController::class, "dashboard"])
+    ->name("admin.dashboard")
+    ->middleware("auth");
 
 route::get("/", [EventController::class, "index"])->name("events.index");
 
