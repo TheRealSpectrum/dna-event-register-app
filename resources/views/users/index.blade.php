@@ -18,19 +18,19 @@
                 <table class="min-w-full leading-normal">
                     <thead>
                         <tr>
-                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-900  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
+                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-800  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
                                 Gebruiker
                             </th>
-                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-900  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
+                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-800  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
                                 Rol
                             </th>
-                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-900  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
+                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-800  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
                                 Aangemaakt
                             </th>
-                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-900  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
+                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-800  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
                                 Bewerken
                             </th>
-                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-900  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
+                            <th scope="col" class="px-5 py-3  bg-white dark:bg-gray-800  border-b border-gray-200 dark:text-gray-300 text-gray-800  text-left text-xs uppercase font-normal">
                                 Verwijderen
                             </th>
                         </tr>
@@ -38,7 +38,7 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-900 text-sm">
+                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0">
                                         <a href="#" class="block relative">
@@ -54,22 +54,22 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-900 text-sm">
+                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap">
                                     Admin
                                 </p>
                             </td>
-                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-900 text-sm">
+                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap">
                                     {{ $user->created_at->format('d/m/Y') }}
                                 </p>
                             </td>
-                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-900 text-sm">
+                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
                                 <a href="/gebruikers/{{ $user->id }}/edit" class="text-indigo-600 hover:text-indigo-900">
                                     Bewerken
                                 </a>
                             </td>
-                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-900 text-sm">
+                            <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
                                 <form action="{{ route("users.destroy", $user->id) }}" method="POST">
                                 @csrf
                                 @method("DELETE")
