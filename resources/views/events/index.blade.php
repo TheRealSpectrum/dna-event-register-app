@@ -15,7 +15,7 @@
                         {{$event->timeUntilEvent()}}
                     </p>
                     <p class="text-gray-800 dark:text-white text-xl font-medium mb-2 row-span-1">
-                        Title
+                        {{$event->title}}
                     </p>
                     <p
                         style="-webkit-line-clamp: 4; display: -webkit-box; -webkit-box-orient: vertical"

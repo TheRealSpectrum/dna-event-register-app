@@ -37,7 +37,7 @@
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white dark:bg-gray-800 text-sm">
                                     <div class="flex items-center">
                                             <p class="text-gray-900 dark:text-gray-300 whitespace-no-wrap">
-                                                Event title here
+                                                {{$event->title}}
                                             </p>
                                     </div>
                                 </td>

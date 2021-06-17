@@ -8,7 +8,12 @@
 
         @csrf
 
-        <h1 class="text-center text-2xl">Event name here</h1>
+        <div class="text-center text-2xl">
+            <label for="tile">Aanmaken evenement: </label>
+            <input type="text" name="title" id="title"
+                    class="border-2 border-indigo-400 dark:bg-gray-800">
+        </div>
+
         <div class="grid grid-cols-2 grid-rows-2 py-4">
             <div class="text-center">
                 <label for="date">Datum:</label><br>

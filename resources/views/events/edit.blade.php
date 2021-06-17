@@ -10,6 +10,11 @@
             @method("PATCH")
             @csrf
 
+            <div class="text-center text-2xl">
+                <label for="tile">Aanpassen evenement: </label>
+                <input type="text" name="title" id="title" value="{{$event->title}}"
+                        class="border-2 border-indigo-400 dark:bg-gray-800">
+            </div>
             <h1 class="text-center text-2xl">Event name here</h1>
             <div class="grid grid-cols-2 grid-rows-2 py-4">
                 <div class="text-center">
