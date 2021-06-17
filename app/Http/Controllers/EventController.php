@@ -85,46 +85,11 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EventRequest $request, $id)
     {
         $event = Event::where("id", $id)->firstOrFail();
 
-        if (
-            $request->has("organizer") &&
-            !empty($request->input("organizer"))
-        ) {
-            $event->organizer = $request->input("organizer");
-        }
-
-        if (
-            $request->has("date") &&
-            !empty($request->input("date")) &&
-            $request->has("time")
-        ) {
-            $event->date = new Carbon(
-                $request->input("date") . " " . $request->input("time")
-            );
-        }
-
-        if ($request->has("location") && !empty($request->input("location"))) {
-            $event->location = $request->input("location");
-        }
-
-        if (
-            $request->has("description") &&
-            !empty($request->input("description"))
-        ) {
-            $event->description = $request->input("description");
-        }
-
-        if (
-            $request->has("max-registration-num") &&
-            !empty($request->input("max-registration-num"))
-        ) {
-            $event->max_registration_num = $request->input(
-                "max-registration-num"
-            );
-        }
+        $event->fill($request->transformed());
 
         $event->save();
 
