@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Carbon\Carbon;
+
 use App\Models\Event;
+use App\Http\Requests\EventRequest;
 
 class EventController extends Controller
 {
@@ -36,17 +39,9 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        $createdEvent = Event::create([
-            "organizer" => $request->input("organizer"),
-            "date" => new Carbon(
-                $request->input("date") . " " . $request->input("time")
-            ),
-            "location" => $request->input("location"),
-            "description" => $request->input("description"),
-            "max_registration_num" => $request->input("max-registration-num"),
-        ]);
+        $createdEvent = Event::create($request->transformed());
 
         return redirect()->route("events.show", [
             "event" => $createdEvent->id,
