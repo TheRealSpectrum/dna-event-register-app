@@ -33,6 +33,18 @@
                         </svg>
                     </button>
                 </div>
+                @auth
+                <div class="hidden md:block">
+                    <form action="{{ route("admin.logout") }}" method="POST">
+                    @csrf
+                    <button type="submit">
+                        <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            Uitloggen
+                        </a>
+                    </button>
+                    </form>
+                </div>
+                @endauth
             </div>
         </div>
         <div class="md:hidden">
@@ -46,6 +58,11 @@
                 <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
                     Contact
                 </a>
+                @auth
+                <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="{{ route("admin.logout") }}">
+                    Loguit
+                </a>
+                @endauth
             </div>
         </div>
     </nav>
