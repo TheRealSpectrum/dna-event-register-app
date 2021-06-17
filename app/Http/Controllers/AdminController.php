@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,9 @@ class AdminController extends Controller
      */
     public function dashboard(Request $request)
     {
-        return view("admin.dashboard");
+        return view("admin.dashboard", [
+            "events" => Event::all(),
+        ]);
     }
 
     public function login()
