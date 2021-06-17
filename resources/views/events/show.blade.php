@@ -4,7 +4,7 @@
 <section class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
 
     <div class="bg-white dark:bg-gray-800 my-5 mx-auto p-6 max-w-3xl rounded-lg border-t-2 border-indigo-400">
-        <h1 class="text-center text-2xl">Event name here</h1>
+        <h1 class="text-center text-2xl">{{$event->title}}</h1>
         <div class="grid grid-cols-2 py-4">
             <div class="text-center">Datum: {{$event->date}}</div>
             <div class="text-center">Locatie: {{$event->location}}</div>
