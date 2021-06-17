@@ -40,6 +40,13 @@
                         </a>
                     </button>
                     </form>
+                    <form action="{{ route("users.index") }}">
+                    <button type="submit">
+                        <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            Gebruikers
+                        </a>
+                    </button>
+                    </form>
                     <form action="{{ route("admin.logout") }}" method="POST">
                     @csrf
                     <button type="submit">
