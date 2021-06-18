@@ -1,8 +1,10 @@
 @extends("layouts.app")
 
+@section("title", "Evenementen")
+
 @section("content")
 
-<section class="bg-gray-100 dark:bg-gray-900">
+<section class="min-h-screen bg-gray-100 dark:bg-gray-900">
 
     <div class="grid grid-cols-4 auto-rows-auto gap-4 py-4">
 
