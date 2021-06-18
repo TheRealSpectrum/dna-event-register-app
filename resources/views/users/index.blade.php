@@ -64,7 +64,7 @@
                                     {{ $user->created_at->format('d/m/Y') }}
                                 </p>
                             </td>
-                            <td class="px-5 py-5 border-b border-sun-ray dark:border-lapis-lazuli  bg-white dark:bg-gray-800 text-sm">
+                            <td class="px-5 py-5 border-b border-sun-ray dark:border-lapis-lazuli text-sm">
                                 <a href="{{route("users.edit", ["user" => $user->id])}}" class="text-indigo-600 hover:text-indigo-900">
                                     Bewerken
                                 </a>
