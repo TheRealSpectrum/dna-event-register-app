@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="ml-3">
                                         <p class="text-gray-900 dark:text-gray-300 whitespace-no-wrap hover:text-blue-300">
-                                            <a href="/gebruikers/{{ $user->id }}">
+                                            <a href="{{route("users.show", ["user" => $user->id])}}">
                                             {{ $user->name }}
                                             </a>
                                         </p>
@@ -65,7 +65,7 @@
                                 </p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200  bg-white dark:bg-gray-800 text-sm">
-                                <a href="/gebruikers/{{ $user->id }}/edit" class="text-indigo-600 hover:text-indigo-900">
+                                <a href="{{route("users.edit", ["user" => $user->id])}}" class="text-indigo-600 hover:text-indigo-900">
                                     Bewerken
                                 </a>
                             </td>
