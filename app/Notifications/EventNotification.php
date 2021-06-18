@@ -44,16 +44,17 @@ class EventNotification extends Notification
     {
         return (new MailMessage())
             ->line(
-                "Beste, " .
-                    $this->data["name"] .
-                    " Dit is een herinnering voor" .
-                    $this->data["title"]
+                "Beste " .
+                    $this->eventData["name"] .
+                    ", " .
+                    " dit is een herinnering voor " .
+                    $this->eventData["title"]
             )
             ->action(
-                $this->data["title"] . "start over 2 dagen!",
-                url($this->data["url"])
+                $this->eventData["title"] . " start over 2 dagen!",
+                url($this->eventData["url"])
             )
-            ->line("We hopen je snel te zien!");
+            ->line("We hopen je te ontvangen!");
     }
 
     /**

@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\{AdminController, EventController, UserController};
+use App\Http\Controllers\{
+    AdminController,
+    EventController,
+    EventNotificationController,
+    UserController
+};
 
 /*
 | Admin routes
@@ -68,3 +73,7 @@ Route::prefix("gebruikers")
             "destroy"
         );
     });
+Route::get("/test", [
+    EventNotificationController::class,
+    "sendEventNotification",
+]);
