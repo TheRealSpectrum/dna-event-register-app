@@ -4,8 +4,8 @@
         <div class="max-w-7xl mx-auto px-8">
             <div class="flex items-center justify-between h-16">
                 <div class=" flex items-center">
-                    <a class="flex-shrink-0" href="/">
-                        <img class="h-8 w-8" src="/icons/rocket.svg" alt="Icon"/>
+                    <a class="flex-shrink-0" href="{{ route("events.index") }}">
+                        <img class="h-8 w-8" src="{{ asset("img/logo.svg") }}" alt="Icon"/>
                     </a>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
