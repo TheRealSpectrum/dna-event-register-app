@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{AdminController, EventController, UserController};
 
+/*
+| Admin routes
+| ------------
+| Middleware: [web, auth]
+|
+| These routes are all checked for authentication and only accesable by admins
+|
+*/
+
 // Admin (partial see guest.php)
 Route::prefix("admin")
     ->name("admin.")
