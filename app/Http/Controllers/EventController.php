@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Http\Requests\EventRequest;
+use Illuminate\Support\Facades\URL;
 
 class EventController extends Controller
 {
@@ -104,6 +105,13 @@ class EventController extends Controller
         $event->registrations()->delete();
         $event->delete();
 
-        return redirect()->route("events.index");
+        if (
+            URL::previous() === URL::route("events.show", $id) ||
+            URL::previous() === URL::route("events.edit", $id)
+        ) {
+            return redirect()->route("events.index");
+        } else {
+            return redirect()->back();
+        }
     }
 }
