@@ -73,7 +73,3 @@ Route::prefix("gebruikers")
             "destroy"
         );
     });
-Route::get("/test", [
-    EventNotificationController::class,
-    "sendEventNotification",
-]);
