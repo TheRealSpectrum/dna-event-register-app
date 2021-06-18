@@ -9,7 +9,6 @@
 
             @method("PATCH")
             @csrf
-
             <div class="text-center text-2xl">
                 <label for="title">Aanpassen evenement: </label>
                 <input type="text" name="title" id="title" value="{{$event->title}}"
@@ -59,19 +58,6 @@
                 focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4">
 
                 Evenement veranderen
-            </button>
-        </form>
-        <form action="{{route("events.destroy", ["event"=>$event->id])}}" method="post">
-
-            @csrf
-            @method("DELETE")
-
-            <button type="submit"
-                class="py-2 px-4 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200
-                text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md
-                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4">
-
-                Evenement verwijderen
             </button>
         </form>
     </div>
