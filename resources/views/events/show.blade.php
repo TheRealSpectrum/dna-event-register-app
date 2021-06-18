@@ -3,7 +3,7 @@
 @section("content")
 <section class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
 
-    <div class="bg-white dark:bg-gray-800 my-5 mx-auto p-6 max-w-3xl rounded-lg border-t-2 border-indigo-400">
+    <div class="bg-white dark:bg-gray-800 my-5 mx-auto p-6 max-w-3xl rounded-lg border-t-2 border-metallic-seaweed dark:border-sun-ray">
         <h1 class="text-center text-2xl">{{$event->title}}</h1>
         <div class="grid grid-cols-2 py-4">
             <div class="text-center">Datum: {{$event->date}}</div>
@@ -20,7 +20,7 @@
 
         @if($event->registrations->count() < $event->max_registration_num)
         <form action="{{route("events.registrations.store", ["event" => $event->id])}}" method="post"
-            class="mt-7 flex flex-col pl-4 border-indigo-400 border-l-4">
+            class="mt-7 flex flex-col pl-4 border-metallic-seaweed dark:border-sun-ray border-l-4">
 
             @csrf
 
@@ -28,17 +28,24 @@
 
             <label for="name">Naam:</label>
             <input type="text" name="name" id="name"
-                class="border-2 border-indigo-400 dark:bg-gray-800">
+                class="border-2 border-metallic-seaweed dark:border-sun-ray dark:bg-gray-800">
 
             <label for="email">Email</label>
             <input type="email" name="email" id="email"
-                class="border-2 border-indigo-400 dark:bg-gray-800">
+                class="border-2 border-metallic-seaweed dark:border-sun-ray dark:bg-gray-800">
 
             <label for="note">Notitie:</label>
             <textarea name="note" id="note" cols="30" rows="3"
-                class="border-2 border-indigo-400 dark:bg-gray-800"></textarea>
+                class="border-2 border-metallic-seaweed dark:border-sun-ray dark:bg-gray-800"></textarea>
 
-            <button type="submit">Registreer</button>
+            <button 
+                class="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200
+                text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md
+                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4" 
+                type="submit">
+
+                Registreer
+            </button>
         </form>
         @else
         <div class="mt-7">
@@ -75,15 +82,15 @@
         @endguest
     </div>
 
-    <div class="flex flex-col bg-white dark:bg-gray-800 max-w-3xl mx-auto p-6 gap-4 mb-4 rounded-lg border-t-2 border-indigo-400">
+    <div class="flex flex-col bg-white dark:bg-gray-800 max-w-3xl mx-auto p-6 gap-4 mb-4 rounded-lg border-t-2 border-metallic-seaweed dark:border-sun-ray">
         <h1 class="text-center text-2xl">Registraties</h1>
         @foreach ($event->registrations as $registration)
             @guest
-            <div class="border-indigo-400 border-l-4 m-t-4 pl-2">
+            <div class="border-metallic-seaweed dark:border-sun-ray border-l-4 m-t-4 pl-2">
                 {{$registration->name}}
             </div>
             @else
-            <div class="border-indigo-400 border-l-4 m-t-4 pl-2">
+            <div class="border-metallic-seaweed dark:border-sun-ray border-l-4 m-t-4 pl-2">
                 <div>Naam: {{$registration->name}}</div>
                 <div>Email: {{$registration->email}}</div>
                 <div>Notitie:<br><span class="ml-4">{{$registration->note}}</span></div>
