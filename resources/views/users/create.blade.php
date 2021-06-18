@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@section("title", "Maak gebruiker")
+@section("title", "Gebruiker aanmaken")
 
 @section("content")
 <section class="bg-gray-100 dark:bg-gray-900 min-h-screen">
