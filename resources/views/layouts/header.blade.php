@@ -1,6 +1,6 @@
 {{-- Copyright (c) 2020 Charlie Rabiller, see ThirdParty/Licences/Tailwind-Kit for full license. --}}
 <div>
-    <nav class="bg-white dark:bg-gray-800  shadow ">
+    <nav class="bg-brick-red  shadow ">
         <div class="max-w-7xl mx-auto px-8">
             <div class="flex items-center justify-between h-16">
                 <div class=" flex items-center">
