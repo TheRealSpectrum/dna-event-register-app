@@ -14,10 +14,10 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function dashboard(Request $request)
+    public function dashboard()
     {
         return view("admin.dashboard", [
-            "events" => Event::all(),
+            "events" => Event::with("registrations")->get(),
         ]);
     }
 
