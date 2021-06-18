@@ -1,5 +1,7 @@
 @extends("layouts.app")
 
+@section("title", "Evenement aanpassen")
+
 @section("content")
 <section class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
 
