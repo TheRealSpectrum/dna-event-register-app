@@ -11,14 +11,16 @@ class EventNotification extends Notification
 {
     use Queueable;
 
+    private $eventData;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($eventData)
     {
-        //
+        $this->eventData = $eventData;
     }
 
     /**
@@ -41,9 +43,17 @@ class EventNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->line("The introduction to the notification.")
-            ->action("Notification Action", url("/"))
-            ->line("Thank you for using our application!");
+            ->line(
+                "Beste, " .
+                    $this->data["name"] .
+                    " Dit is een herinnering voor" .
+                    $this->data["title"]
+            )
+            ->action(
+                $this->data["title"] . "start over 2 dagen!",
+                url($this->data["url"])
+            )
+            ->line("We hopen je snel te zien!");
     }
 
     /**
