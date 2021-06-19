@@ -7,7 +7,6 @@ use App\Models\Registration;
 use App\Notifications\EventNotification;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
 
 class SendEventNotification extends Command
 {
@@ -23,7 +22,7 @@ class SendEventNotification extends Command
      *
      * @var string
      */
-    protected $description = "Send email notification to event registrations";
+    protected $description = "Send email notification to event attendees";
 
     /**
      * Create a new command instance.
@@ -51,16 +50,25 @@ class SendEventNotification extends Command
                 $event->id
             )->get();
 
-            $eventData = [
-                "name" => "name",
-                "title" => $event->title,
-                "url" => route("events.show", $event->id),
-            ];
+            foreach ($registrations as $registration) {
+                $notificationData = [
+                    "name" => $registration->name,
+                    "title" => $event->title,
+                    "url" => route("events.show", $event->id),
+                    "time_till_event" =>
+                        $event->title .
+                        " start over " .
+                        $event->date->diffInHours(Carbon::now()) .
+                        " uur!",
+                    "event_id" => $event->id,
+                ];
 
-            Notification::send(
-                $registrations,
-                new EventNotification($eventData)
-            );
+                if ($registration->notifications->isEmpty()) {
+                    $registration->notify(
+                        new EventNotification($notificationData)
+                    );
+                }
+            }
         }
     }
 }
