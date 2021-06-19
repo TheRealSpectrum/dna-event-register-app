@@ -53,7 +53,6 @@ class EventNotification extends Notification
             )
             ->action(
                 $this->notificationData["title"] .
-                    " start over " .
                     $this->notificationData["time_till_event"],
                 url($this->notificationData["url"])
             )
