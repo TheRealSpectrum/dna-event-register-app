@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Registration;
+use Carbon\Carbon;
 
 class Event extends Model
 {
@@ -31,7 +32,7 @@ class Event extends Model
 
     public function timeUntilEvent(): string
     {
-        $difference = (new \DateTime("NOW"))->diff($this->date);
+        $difference = Carbon::today()->diff($this->date);
         if ($difference->d > 14) {
             $weeks = floor($difference->d / 7);
             return "in $weeks weken";
@@ -50,6 +51,6 @@ class Event extends Model
 
     public function time(): string
     {
-        return $this->date->format("h:m");
+        return $this->date->format("H:i");
     }
 }
