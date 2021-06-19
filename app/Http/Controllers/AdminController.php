@@ -17,7 +17,9 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view("admin.dashboard", [
-            "events" => Event::with("registrations")->get(),
+            "events" => Event::with("registrations")
+                ->oldest("date")
+                ->get(),
         ]);
     }
 
