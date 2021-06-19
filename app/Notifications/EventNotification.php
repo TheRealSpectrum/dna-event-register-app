@@ -11,16 +11,16 @@ class EventNotification extends Notification
 {
     use Queueable;
 
-    private $eventData;
+    private $notificationData;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($eventData)
+    public function __construct($notificationData)
     {
-        $this->eventData = $eventData;
+        $this->notificationData = $notificationData;
     }
 
     /**
@@ -45,14 +45,17 @@ class EventNotification extends Notification
         return (new MailMessage())
             ->line(
                 "Beste " .
-                    $this->eventData["name"] .
+                    $this->notificationData["name"] .
                     ", " .
                     " dit is een herinnering voor " .
-                    $this->eventData["title"]
+                    $this->notificationData["title"] .
+                    "."
             )
             ->action(
-                $this->eventData["title"] . " start over 2 dagen!",
-                url($this->eventData["url"])
+                $this->notificationData["title"] .
+                    " start over " .
+                    $this->notificationData["time_till_event"],
+                url($this->notificationData["url"])
             )
             ->line("We hopen je te ontvangen!");
     }
