@@ -34,18 +34,18 @@ class Event extends Model
         $difference = (new \DateTime("NOW"))->diff($this->date);
         if ($difference->d > 14) {
             $weeks = floor($difference->d / 7);
-            return "in $weeks weeks";
+            return "in $weeks weken";
         }
 
         if ($difference->d === 1) {
-            return "tommorow at {$this->time()}";
+            return "morgen om {$this->time()}";
         }
 
         if ($difference->d > 0) {
-            return "in {$difference->d} days";
+            return "in {$difference->d} dagen";
         }
 
-        return "today at {$this->time()}";
+        return "vandaag om {$this->time()}";
     }
 
     public function time(): string
