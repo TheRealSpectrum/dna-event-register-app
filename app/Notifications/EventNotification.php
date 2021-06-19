@@ -31,7 +31,7 @@ class EventNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ["mail"];
+        return ["mail", "database"];
     }
 
     /**
@@ -69,7 +69,7 @@ class EventNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-                //
-            ];
+            "event_id" => $this->notificationData["event_id"],
+        ];
     }
 }
