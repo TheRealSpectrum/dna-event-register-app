@@ -53,8 +53,7 @@ class EventNotification extends Notification
                     "."
             )
             ->action(
-                $this->notificationData["title"] .
-                    $this->notificationData["time_till_event"],
+                $this->notificationData["time_till_event"],
                 url($this->notificationData["url"])
             )
             ->line("We hopen je te ontvangen!");
