@@ -50,4 +50,4 @@ Route::delete("/registraties/{registration}", [
 // Contact
 Route::get("/contact", function () {
     return view("contact.index");
-});
+})->name("contact.index");
