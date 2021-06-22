@@ -55,16 +55,8 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        $event = Event::where("id", $id)
-            ->with("registrations")
-            ->first();
-
-        if ($event === null) {
-            return response()->view("events.notfound", [], 404);
-        }
-
         return view("events.show", [
             "event" => $event,
         ]);
@@ -76,12 +68,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
         return view("events.edit", [
-            "event" => Event::where("id", $id)
-                ->with("registrations")
-                ->firstOrFail(),
+            "event" => $event,
         ]);
     }
 
@@ -92,15 +82,13 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EventRequest $request, $id)
+    public function update(EventRequest $request, Event $event)
     {
-        $event = Event::where("id", $id)->firstOrFail();
-
         $event->fill($request->transformed());
 
         $event->save();
 
-        return redirect()->route("events.show", ["event" => $id]);
+        return redirect()->route("events.show", ["event" => $event->id]);
     }
 
     /**
@@ -109,15 +97,14 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        $event = Event::where("id", $id)->firstOrFail();
         $event->registrations()->delete();
         $event->delete();
 
         if (
-            URL::previous() === URL::route("events.show", $id) ||
-            URL::previous() === URL::route("events.edit", $id)
+            URL::previous() === URL::route("events.show", $event->id) ||
+            URL::previous() === URL::route("events.edit", $event->id)
         ) {
             return redirect()->route("events.index");
         } else {
