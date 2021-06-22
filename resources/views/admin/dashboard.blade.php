@@ -44,9 +44,11 @@
                             <tr class="bg-gray-100 odd:bg-gray-300 dark:bg-gray-700 dark:odd:bg-gray-800">
                                 <td class="px-5 py-5 border-b border-sun-ray dark:border-lapis-lazuli text-sm">
                                     <div class="flex items-center">
-                                            <p class="text-gray-900 dark:text-gray-300 whitespace-no-wrap">
+                                        <a href="{{ route("events.show", $event->id) }}">
+                                            <p class="text-gray-900 dark:text-gray-300 whitespace-no-wrap hover:text-lapis-lazuli dark:hover:text-sun-ray">
                                                 {{$event->title}}
                                             </p>
+                                        </a>
                                     </div>
                                 </td>
                                 <td class="px-5 py-5 border-b border-sun-ray dark:border-lapis-lazuli text-sm">
