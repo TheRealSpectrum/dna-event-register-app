@@ -36,20 +36,19 @@ Route::prefix("evenementen")
     ->name("events.")
     ->group(function () {
         Route::get("/aanmaken", [EventController::class, "create"])->name(
-            "events.index"
+            "create"
         );
         Route::post("/", [EventController::class, "store"])->name("store");
-        Route::get("/{event}/aanpassen", [
-            EventController::class,
-            "edit",
-        ])->name("edit");
+        Route::get("/{event}/aanpassen", [EventController::class, "edit"])
+            ->name("edit")
+            ->where("event", "[0-9]+");
         Route::match(["PUT", "PATCH"], "/{event}", [
             EventController::class,
             "update",
         ])->name("update");
-        Route::delete("/{event}", [EventController::class, "destroy"])->name(
-            "destroy"
-        );
+        Route::delete("/{event}", [EventController::class, "destroy"])
+            ->name("destroy")
+            ->where("event", "[0-9]+");
     });
 
 // Users (CRUD)
@@ -61,15 +60,19 @@ Route::prefix("gebruikers")
             "create"
         );
         Route::post("/", [UserController::class, "store"])->name("store");
-        Route::get("/{user}", [UserController::class, "show"])->name("show");
-        Route::get("/{user}/aanpassen", [UserController::class, "edit"])->name(
-            "edit"
-        );
+        Route::get("/{user}", [UserController::class, "show"])
+            ->name("show")
+            ->where("user", "[0-9]+");
+        Route::get("/{user}/aanpassen", [UserController::class, "edit"])
+            ->name("edit")
+            ->where("user", "[0-9]+");
         Route::match(["PUT", "PATCH"], "/{user}", [
             UserController::class,
             "update",
-        ])->name("update");
-        Route::delete("/{user}", [UserController::class, "destroy"])->name(
-            "destroy"
-        );
+        ])
+            ->name("update")
+            ->where("user", "[0-9]+");
+        Route::delete("/{user}", [UserController::class, "destroy"])
+            ->name("destroy")
+            ->where("user", "[0-9]+");
     });
