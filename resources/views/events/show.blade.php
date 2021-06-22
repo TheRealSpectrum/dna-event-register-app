@@ -4,6 +4,13 @@
 
 @section("content")
 <section class="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
+    <div class="px-4 pb-4 text-gray-500 pt-4 md:w-1/6">
+        <a href="{{ route("events.index") }}">
+            <button type="button" class="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                Terug naar evenementen
+            </button>
+        </a>
+    </div>
 
     <div class="bg-white dark:bg-gray-800 my-5 mx-auto p-6 max-w-3xl rounded-lg border-t-2 border-metallic-seaweed dark:border-sun-ray">
         <h1 class="text-center text-2xl">{{$event->title}}</h1>
