@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUserRequest extends FormRequest
@@ -21,11 +22,11 @@ class StoreUserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(User $user)
     {
         return [
             "name" => "required",
-            "email" => ["required", "unique:users,email," . $this->user->id],
+            "email" => ["required", "unique:users,email," . $user->id],
             "password" => "required",
         ];
     }
