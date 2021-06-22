@@ -12,7 +12,7 @@
                             <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="{{ route("events.index") }}">
                                 Evenementen
                             </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
+                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="{{ route("contact.index") }}">
                                 Contact
                             </a>
                         </div>

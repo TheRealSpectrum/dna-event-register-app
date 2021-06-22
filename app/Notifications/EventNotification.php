@@ -43,6 +43,7 @@ class EventNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
+            ->subject("Herinnering voor aankomend evenement")
             ->line(
                 "Beste " .
                     $this->notificationData["name"] .
@@ -52,8 +53,7 @@ class EventNotification extends Notification
                     "."
             )
             ->action(
-                $this->notificationData["title"] .
-                    $this->notificationData["time_till_event"],
+                $this->notificationData["time_till_event"],
                 url($this->notificationData["url"])
             )
             ->line("We hopen je te ontvangen!");
