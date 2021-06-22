@@ -59,13 +59,39 @@
             <hr class="border-sun-ray dark:border-lapis-lazuli"/>
         <div class="items-center w-full p-4 space-y-4 text-gray-500 dark:text-gray-300 md:inline-flex md:space-y-0">
             <h2 class="max-w-sm mx-auto md:w-4/12">
-                Wachtwoord
+                Huidig wachtwoord
             </h2>
             <div class="max-w-sm mx-auto md:w-2/3">
                 <div class=" relative ">
-                    <input type="password" id="user-info-password" name="password" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Wachtwoord"/>
+                    <input type="password" id="user-info-password" name="current_password" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Huidig wachtwoord"/>
+                </div>
+                    @error("current_password")
+                            <p class="text-red-500">{{ $message }}</p> 
+                    @enderror
+            </div>
+        </div>
+        <div class="items-center w-full p-4 space-y-4 text-gray-500 dark:text-gray-300 md:inline-flex md:space-y-0">
+            <h2 class="max-w-sm mx-auto md:w-4/12">
+                Nieuw wachtwoord
+            </h2>
+            <div class="max-w-sm mx-auto md:w-2/3">
+                <div class=" relative ">
+                    <input type="password" id="user-info-password" name="password" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Nieuw wachtwoord"/>
                 </div>
                     @error("password")
+                            <p class="text-red-500">{{ $message }}</p> 
+                    @enderror
+            </div>
+        </div>
+        <div class="items-center w-full p-4 space-y-4 text-gray-500 dark:text-gray-300 md:inline-flex md:space-y-0">
+            <h2 class="max-w-sm mx-auto md:w-4/12">
+                Herhaal nieuw wachtwoord
+            </h2>
+            <div class="max-w-sm mx-auto md:w-2/3">
+                <div class=" relative ">
+                    <input type="password" id="user-info-password" name="password_confirmation" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Herhaal nieuw wachtwoord"/>
+                </div>
+                    @error("password_confirmation")
                             <p class="text-red-500">{{ $message }}</p> 
                     @enderror
             </div>

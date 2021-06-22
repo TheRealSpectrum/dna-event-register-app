@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\{StoreUserRequest, UpdateUserRequest};
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -79,6 +80,16 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        if (!Hash::check($request->current_password, $user->password)) {
+            return redirect()
+                ->route("users.edit", $user->id)
+                ->withErrors([
+                    "current_password" => "Wachwoord is niet correct.",
+                ]);
+        }
+
+        // dd($request->transformValidated());
+
         $user->update($request->transformValidated());
 
         return redirect()

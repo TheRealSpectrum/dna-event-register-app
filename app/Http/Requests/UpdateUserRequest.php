@@ -26,7 +26,9 @@ class UpdateUserRequest extends FormRequest
         return [
             "name" => "required",
             "email" => ["required", "unique:users,email," . $this->user->id],
-            "password" => "required",
+            "password" =>
+                "nullable|required_with:password_confirmation|string|confirmed",
+            "current_password" => "required",
         ];
     }
 
@@ -34,6 +36,14 @@ class UpdateUserRequest extends FormRequest
     {
         $result = $this->validated();
         $result["password"] = bcrypt($result["password"]);
+        $result["password_confirmation"] = $result["password"];
         return $result;
+    }
+
+    public function messages()
+    {
+        return [
+            "current_password.required" => "Wachwoord is niet correct.",
+        ];
     }
 }
