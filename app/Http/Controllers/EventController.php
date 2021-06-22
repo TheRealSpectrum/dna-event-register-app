@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Http\Requests\EventRequest;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 
 class EventController extends Controller
@@ -17,6 +18,7 @@ class EventController extends Controller
     {
         return view("events.index", [
             "events" => Event::withCount("registrations")
+                ->whereDate("date", ">=", Carbon::today())
                 ->oldest("date")
                 ->get(),
         ]);
