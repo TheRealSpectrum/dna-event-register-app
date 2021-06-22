@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Event;
+
 class AdminController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function dashboard()
+    public function dashboard(): View
     {
         return view("admin.dashboard", [
             "events" => Event::with("registrations")
@@ -23,7 +20,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function login()
+    public function login(): View
     {
         if (Auth::check()) {
             return redirect()->route("admin.dashboard");
@@ -31,7 +28,7 @@ class AdminController extends Controller
         return view("admin/login");
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
             "email" => ["required", "email"],
@@ -49,7 +46,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
 
