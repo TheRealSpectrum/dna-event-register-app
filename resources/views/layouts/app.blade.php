@@ -7,6 +7,9 @@
 
     <title>Party Planner - @yield("title")</title>
 
+    {{-- Favicon --}}
+    <link rel="shortcut icon" type="image/jpg" href="{{ asset("img/logo.svg") }}"/>
+    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/146730865b.js" crossorigin="anonymous"></script>
