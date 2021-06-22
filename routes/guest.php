@@ -29,16 +29,20 @@ Route::prefix("admin")
 
 // Events (CRUD - partial see admin.php)
 Route::get("/", [EventController::class, "index"])->name("events.index");
-Route::get("/evenementen/{event}", [EventController::class, "show"])->name(
-    "events.show"
-);
+Route::get("/evenementen/{event}", [EventController::class, "show"])
+    ->name("events.show")
+    ->where("event", "[0-9]+");
 
 // Registrations (CRUD store, delete)
 Route::post("/evenementen/{event}/registraties", [
     RegistrationController::class,
     "store",
-])->name("events.registrations.store");
+])
+    ->name("events.registrations.store")
+    ->where("event", "[0-9]+");
 Route::delete("/registraties/{registration}", [
     RegistrationController::class,
     "destroy",
-])->name("registrations.destroy");
+])
+    ->name("registrations.destroy")
+    ->where("event", "[0-9]+");
