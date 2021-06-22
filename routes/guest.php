@@ -46,3 +46,8 @@ Route::delete("/registraties/{registration}", [
 ])
     ->name("registrations.destroy")
     ->where("event", "[0-9]+");
+
+// Contact
+Route::get("/contact", function () {
+    return view("contact.index");
+});
