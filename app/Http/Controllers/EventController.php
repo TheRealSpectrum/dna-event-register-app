@@ -57,10 +57,16 @@ class EventController extends Controller
      */
     public function show($id)
     {
+        $event = Event::where("id", $id)
+            ->with("registrations")
+            ->first();
+
+        if ($event === null) {
+            return response()->view("events.notfound", [], 404);
+        }
+
         return view("events.show", [
-            "event" => Event::where("id", $id)
-                ->with("registrations")
-                ->firstOrFail(),
+            "event" => $event,
         ]);
     }
 
