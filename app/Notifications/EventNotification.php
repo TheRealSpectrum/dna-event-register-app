@@ -43,6 +43,7 @@ class EventNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
+            ->subject("Herinnering voor aankomend evenement")
             ->line(
                 "Beste " .
                     $this->notificationData["name"] .
