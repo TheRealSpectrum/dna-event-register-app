@@ -2,27 +2,18 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+
+use App\Models\User;
 
 class StoreUserRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules(User $user)
+    public function rules(User $user): array
     {
         return [
             "name" => "required",
@@ -31,7 +22,7 @@ class StoreUserRequest extends FormRequest
         ];
     }
 
-    public function transformValidated()
+    public function transformValidated(): array
     {
         $result = $this->validated();
         $result["password"] = bcrypt($result["password"]);
