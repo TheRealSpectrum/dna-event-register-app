@@ -16,7 +16,7 @@ class AdminController extends Controller
         return view("admin.dashboard", [
             "events" => Event::with("registrations")
                 ->oldest("date")
-                ->get(),
+                ->paginate(10),
         ]);
     }
 
