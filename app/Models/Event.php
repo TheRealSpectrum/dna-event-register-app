@@ -4,14 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+use Carbon\Carbon;
 
 use App\Models\Registration;
-use Carbon\Carbon;
 
 class Event extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         "title",
         "organizer",
@@ -21,11 +26,17 @@ class Event extends Model
         "max_registration_num",
     ];
 
+    /**
+     * @var array
+     */
     protected $casts = [
         "date" => "datetime",
     ];
 
-    public function registrations()
+    /**
+     * @see \App\Models\Registration
+     */
+    public function registrations(): HasMany
     {
         return $this->hasMany(Registration::class);
     }
