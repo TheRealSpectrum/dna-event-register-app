@@ -28,7 +28,7 @@
         @guest
 
         @if($event->registrations->count() < $event->max_registration_num)
-        <form action="{{route("events.registrations.store", ["event" => $event->id])}}" method="post"
+        <form action="{{route("events.registrations.store", ["event_id" => $event->id])}}" method="post"
             class="mt-7 flex flex-col pl-4 border-metallic-seaweed dark:border-sun-ray border-l-4">
 
             @csrf
@@ -47,10 +47,10 @@
             <textarea name="note" id="note" cols="30" rows="3"
                 class="border-2 border-metallic-seaweed dark:border-sun-ray dark:bg-gray-800"></textarea>
 
-            <button 
+            <button
                 class="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200
                 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md
-                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4" 
+                focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg mt-4"
                 type="submit">
 
                 Registreer

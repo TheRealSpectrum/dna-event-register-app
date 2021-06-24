@@ -34,7 +34,7 @@ Route::get("/evenementen/{event}", [EventController::class, "show"])
     ->where("event", "[0-9]+");
 
 // Registrations (CRUD store, delete)
-Route::post("/evenementen/{event}/registraties", [
+Route::post("/evenementen/{event_id}/registraties", [
     RegistrationController::class,
     "store",
 ])
