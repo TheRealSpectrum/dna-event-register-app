@@ -12,3 +12,7 @@ package-lock.json
 # Union types are not supported so files using them will have to be ignored for now
 
 App/Exceptions/EventNotFoundException.php
+
+# `static` return type is not supported so files using them will have to be ignored for now
+
+database/factories/RegistrationFactory.php

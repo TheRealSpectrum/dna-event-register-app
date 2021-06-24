@@ -2,24 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\{Registration, Event};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RegistrationFactory extends Factory
+use App\Models\{Event, Registration};
+
+final class RegistrationFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
      * @var string
      */
     protected $model = Registration::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
+    public function definition(): array
     {
         return [
             "event_id" => Event::factory(),
@@ -29,7 +23,7 @@ class RegistrationFactory extends Factory
         ];
     }
 
-    public function oneEvent(?Event $optionalEvent = null)
+    public function oneEvent(?Event $optionalEvent = null): static
     {
         $event = $optionalEvent ?? Event::factory()->create();
         return $this->state(function (array $attributes) use ($event) {
