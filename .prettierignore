@@ -8,3 +8,7 @@ composer.json
 composer.lock
 package.json
 package-lock.json
+
+# Union types are not supported so files using them will have to be ignored for now
+
+App/Exceptions/EventNotFoundException.php

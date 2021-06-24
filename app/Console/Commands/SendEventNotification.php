@@ -2,44 +2,32 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
+
+use Carbon\Carbon;
+
 use App\Models\Event;
 use App\Models\Registration;
 use App\Notifications\EventNotification;
-use Carbon\Carbon;
-use Illuminate\Console\Command;
 
 class SendEventNotification extends Command
 {
     /**
-     * The name and signature of the console command.
-     *
      * @var string
      */
     protected $signature = "send:notifications";
 
     /**
-     * The console command description.
-     *
      * @var string
      */
     protected $description = "Send email notification to event attendees";
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    public function handle()
+    public function handle(): int
     {
         $events = Event::where("date", "<=", Carbon::now()->addDays(2))->get();
 
@@ -70,5 +58,7 @@ class SendEventNotification extends Command
                 }
             }
         }
+
+        return 0;
     }
 }
