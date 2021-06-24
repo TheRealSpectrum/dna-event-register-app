@@ -2,12 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\{
-    AdminController,
-    EventController,
-    EventNotificationController,
-    UserController
-};
+use App\Http\Controllers\{AdminController, EventController, UserController};
 
 /*
 | Admin routes
