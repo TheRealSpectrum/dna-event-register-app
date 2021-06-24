@@ -14,7 +14,10 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected array $fillable = [
+    /**
+     * @var array
+     */
+    protected $fillable = [
         "title",
         "organizer",
         "date",
@@ -23,7 +26,10 @@ class Event extends Model
         "max_registration_num",
     ];
 
-    protected array $casts = [
+    /**
+     * @var array
+     */
+    protected $casts = [
         "date" => "datetime",
     ];
 

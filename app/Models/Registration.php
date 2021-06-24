@@ -13,7 +13,10 @@ class Registration extends Model
 {
     use HasFactory, Notifiable;
 
-    protected array $fillable = ["event_id", "name", "email", "note"];
+    /**
+     * @var array
+     */
+    protected $fillable = ["event_id", "name", "email", "note"];
 
     /**
      * @see \App\Models\Event
