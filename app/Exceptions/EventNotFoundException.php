@@ -1,19 +1,24 @@
 <?php
 
+// This file might not be formatted automatically because prettier does not support union types
+
 namespace App\Exceptions;
 
-use Illuminate\Support\Facades\Route;
 
 use Exception;
 
-class EventNotFoundException extends Exception
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Route;
+
+final class EventNotFoundException extends Exception
 {
-    public function __construct(int $id)
+    public function __construct(int $eventId)
     {
-        $this->eventId = $id;
+        $this->eventId = $eventId;
     }
 
-    public function render()
+    public function render(): View | Response
     {
         if (!in_array("GET", Route::getCurrentRoute()->methods())) {
             return redirect()->route("events.show", [
